@@ -7,3 +7,50 @@ a flag on its top.
 Thus, in addition to climbing the mountain in that exercise,
 it should be able to scale a molehill or Mount Everest.
 */
+import "turns";
+
+function stepUp(){
+	while(frontIsBlocked()){
+		turnLeft();
+		move();
+		turnRight();
+		move();
+	}
+}
+
+function stepDown(){
+	while(rightIsClear()){
+		turnRight();
+		move();
+		turnLeft();
+		if(frontIsClear()){
+		move();
+			}else{
+			stepUp();
+				}
+		}
+}
+
+function climbMountain(){
+	while(frontIsBlocked()){
+		stepUp();
+	}
+	while(frontIsClear()){
+		putBeeper();
+		move();
+		stepDown();
+		}
+}
+
+function moveToWall(){
+	while(frontIsClear()){
+		move();
+	}
+}
+
+
+function Solve(){
+	moveToWall();
+	climbMountain();
+	climbMountain();
+}
